@@ -26,3 +26,7 @@ socket.on("chat-msg", data => {
   output.innerHTML +=
     "<p><strong>" + data.handle + ": </strong>" + data.message + "</p>";
 });
+
+socket.on('typing', data => {
+    feedback.innerHTML = '<p><em>' + data + 'is typing...</em></p>';
+});
