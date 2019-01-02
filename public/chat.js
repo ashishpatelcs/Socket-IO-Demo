@@ -7,6 +7,7 @@ var message = document.getElementById("msg");
 var handle = document.getElementById("handle");
 var sendBtn = document.getElementById("send");
 var output = document.getElementById("output");
+var feedback = document.getElementById("feedback");
 
 // emit events
 sendBtn.addEventListener("click", () => {
@@ -15,6 +16,10 @@ sendBtn.addEventListener("click", () => {
     handle: handle.value
   });
 });
+
+message.addEventListener("keypress", () => {
+    socket.emit("typing", handle.value);
+})
 
 // listen events
 socket.on("chat-msg", data => {
